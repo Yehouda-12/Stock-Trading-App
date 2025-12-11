@@ -1,0 +1,20 @@
+{
+  "name": "stock-trading-app",
+  "version": "1.0.0",
+  "description": "Yehouda Cohen\r 347466765\r Golan",
+  "homepage": "https://github.com/Yehouda-12/Stock-Trading-App#readme",
+  "bugs": {
+    "url": "https://github.com/Yehouda-12/Stock-Trading-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yehouda-12/Stock-Trading-App.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
