@@ -1,4 +1,6 @@
-
+import { stockMarket } from "../dataStock/data.js";
+import readLine from "readline-sync";
+const stocks = stockMarket.stocks;
 export function searchStock(identifier) {
   const findStock = stocks.filter(
     (stock) => stock.name === identifier || stock.id === identifier
@@ -32,17 +34,12 @@ export function filterStocksByPrice(givenPrice, above) {
   }
 }
 
-
-
 export function buy(identifier) {
   const find = searchStock(identifier);
-  if (find.length === 0) {
-    console.log("Not stock with this identifier");
-    return;
-  }
+
   const stock = find[0];
-  const units = parseInt(
-    readLine.question(`How many ${stock.name} you want to buy? :`)
+  const units = readLine.questionInt(
+    `How many ${stock.name} you want to buy? :`
   );
   if (!units || units <= 0) {
     console.log("Invalid units");
@@ -54,7 +51,7 @@ export function buy(identifier) {
   }
   console.log(stock);
 
-  console.log(`you pay ${stock.currentPrice * units}`);
+  console.log(`you pay ${stock.currentPrice * units} $`);
   stock.availableStocks -= units;
   stock.previousPrices.push(stock.currentPrice);
   stock.currentPrice = stock.currentPrice * 1.05;
@@ -76,14 +73,15 @@ export function sell(identifier) {
     return;
   }
   const stock = find[0];
-  const units = parseInt(
-    readLine.question(`How many ${stock.name} you want to sell? :`)
+  const units = readLine.questionInt(
+    `How many ${stock.name} you want to sell? :`
   );
   if (!units || units <= 0) {
     console.log("Invalid units");
     return;
   }
-  console.log(`You receveid ${units * stock.currentPrice}`);
+  console.log(`You receveid ${units * stock.currentPrice} $`);
+  console.log(stock);
 
   stock.availableStocks += units;
   stock.previousPrices.push(stock.currentPrice);
